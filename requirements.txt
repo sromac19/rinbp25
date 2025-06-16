@@ -1,4 +1,0 @@
-weaviate-client
-openai
-tqdm
-python-dotenv
