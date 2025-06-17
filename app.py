@@ -4,80 +4,28 @@ from hybrid_search import hybrid_search
 
 # ─── Streamlit setup ────────────────────────────────────────────────────────
 st.set_page_config(page_title="🍽️ Recipe Chatbot", layout="wide")
-st.markdown("""
-  <style>
-    .block-container { max-width: 900px; padding: 1rem 2rem; }
-    h1, p { text-align: left !important; }
-  </style>
-""", unsafe_allow_html=True)
-
 st.markdown(
-    """
+    f"""
     <style>
-      /* 1) Fade background image */
-      [data-testid="stAppViewContainer"] {
-        position: relative;
-        z-index: 0;
-      }
-      [data-testid="stAppViewContainer"]::before {
-        content: "";
-        position: fixed;
-        top:0; left:0; right:0; bottom:0;
-        background: url('https://towardsdatascience.com/wp-content/uploads/2021/07/0wsWIB7I_n0XYMGca-scaled.jpg') center/cover no-repeat;
-        filter: brightness(0.15) contrast(1.1);
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      /* 2) Main container styling */
-      .block-container {
-        background-color: rgba(0,0,0,0.7) !important;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-      }
-
-      /* 3) Text & headers white */
-      .block-container h1,
-      .block-container h2,
-      .block-container h3,
-      .block-container p,
-      .block-container .stText {
-        color: #FFFFFF !important;
-      }
-
-      /* 4) Input box styling */
-      .stTextInput>div>div>input {
-        background-color: #333 !important;
-        color: #fff !important;
-        border: 1px solid #555 !important;
-      }
-      .stTextInput>div>div>input::placeholder {
-        color: #bbb !important;
-      }
-
-      /* 5) Primary button */
-      button[kind="primary"] {
-        background-color: #e63946 !important;
-        color: #fff !important;
-        border-radius: 8px !important;
-      }
-      /* 6) Secondary button */
-      button[kind="secondary"] {
-        background-color: #f1c40f !important;
-        color: #000 !important;
-        border-radius: 8px !important;
-      }
-
-      /* 7) Expander headers */
-      .stExpanderHeader {
-        background-color: rgba(255,255,255,0.1) !important;
-        border-radius: 8px !important;
-        color: #fff !important;
-      }
+      /* full‐page background with a black fade overlay */
+      .stApp {{
+        background: 
+          linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+          url("https://towardsdatascience.com/wp-content/uploads/2021/07/0wsWIB7I_n0XYMGca-scaled.jpg");
+        background-size: cover;
+        background-position: center;
+      }}
+      /* make sure the main container stays transparent */
+      .block-container {{
+        background: none;
+      }}
+      /* keep all text left-aligned as before */
+      h1, p {{ text-align: left !important; }}
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
+   
 
 st.title("🍽️ Recipe Recommendation Chatbot")
 st.write("Hey fellow hungry person, what would you like to eat today?")
@@ -165,4 +113,3 @@ with col2:
 
                 st.markdown("**Directions:**")
                 st.write(dirs_row[0] if dirs_row else "")
-
